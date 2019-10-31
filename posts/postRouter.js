@@ -14,11 +14,8 @@ router.get('/', (req, res) => {
             res.status(500).json(error))
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', validatePostId, (req, res) => {
     const id = req.params.id
-    if(!id){
-        res.status(404).json({ message: "The user with the specified ID does not exist." })
-    } else {
         postModel
             .getById(id)
             .then(posts => {
@@ -29,7 +26,7 @@ router.get('/:id', (req, res) => {
             })
     }
 
-});
+);
 
 router.delete('/:id', (req, res) => {
     const id = req.params.id
@@ -72,6 +69,12 @@ router.put('/:id', (req, res) => {
 
 
 function validatePostId(req, res, next) {
+    const id = req.params.id
+    if(!id){
+        res.status(404).json({ message: "The user with the specified ID does not exist." })
+    } 
+
+    next()
 
 };
 

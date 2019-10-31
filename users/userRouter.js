@@ -157,7 +157,7 @@ function validateUserId(req, res, next) {
 function validateUser(req, res, next) {
     const postBody = req.body
     if(!postBody){
-        res.status(400).json({ errorMessage: "Please provide name for the post." })
+        res.status(400).json({ errorMessage: "Please provide name for the user." })
     } else if(!postBody.name){
         res.status(400).json({message: "missing required name field from middleware" })
     }
