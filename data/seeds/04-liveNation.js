@@ -1,6 +1,8 @@
-module.exports = {
-    get
-  };
+exports.seed = function(knex, Promise){
+    return knex('liveNation').insert(
+        makeMulti()
+    )
+}
 
 let show = [{cover: "https://static.maestro.io/media/5eb9a2f25216e3002c2b41c7/5f49bb7353bef000a4043b66.jpg",
 date: "Default value",
@@ -73,10 +75,11 @@ venue: "Default value"
 }
 ]
 
-let arr = []
+
 
 function makeMulti() {
-  for (let i = 0; i < 100; i++) {
+    let arr = []
+  for (let i = 0; i < 300; i++) {
     let num = i
     let obj = {
         array_id: i,
@@ -89,7 +92,3 @@ function makeMulti() {
   }
   return arr;
 }
-  
-  function get() {
-    return makeMulti();
-  }
